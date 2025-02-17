@@ -1,0 +1,11 @@
+name: PartySystem
+version: '1.0-SNAPSHOT'
+main: dev.blueorcaz.partySystem.PartySystem
+api-version: '1.21'
+authors: [ BlueOrcaz ]
+description: Recreation of Hypixel's Party System
+commands:
+  sigma:
+    description: sigmanese
+    usage: /sigma
+
