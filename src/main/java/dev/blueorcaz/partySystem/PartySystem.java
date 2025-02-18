@@ -10,7 +10,7 @@ public final class PartySystem extends JavaPlugin {
         // Plugin startup logic
         getLogger().info("Party Chat Enabled"); // startup msg
 
-        this.getCommand("sigma").setExecutor(new PartyCommands());
+        this.getCommand("party").setExecutor(new PartyCommands());
     }
 
     @Override
