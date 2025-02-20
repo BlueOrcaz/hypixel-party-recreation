@@ -34,6 +34,11 @@ public class Party {
         player.sendMessage("You joined the Party");
     }
 
+    public void removeMember(Player player) {
+        members.remove(player.getUniqueId());
+        player.sendMessage("You have left the party");
+    }
+
     public void setMembers(HashSet<UUID> members) {
         this.members = members;
     }

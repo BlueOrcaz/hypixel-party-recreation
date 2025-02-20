@@ -2,6 +2,7 @@ package dev.blueorcaz.partySystem.Commands;
 
 import dev.blueorcaz.partySystem.Managers.PartyManager;
 import dev.blueorcaz.partySystem.Model.Party;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,17 +32,23 @@ public class PartyCommands implements CommandExecutor {
             case "create":
                 partyManager.createParty(player);
                 break;
-            case "list":
-
-                break;
             case "invite":
-                player.sendMessage("Unknown subc2323ommand.");
+                if (args.length < 2) {
+                    player.sendMessage("Usage: /party invite <player>");
+                    break;
+                }
+                // invite logic
+                Player target = Bukkit.getPlayerExact(args[1]);
+                partyManager.inviteParty(player, target);
+                break;
+            case "list":
+                partyManager.listParty(player);
                 break;
             case "join":
                 player.sendMessage("Unknown s1ubcommand.");
                 break;
             case "leave":
-                player.sendMessage("Unknown 232subcommand.");
+                partyManager.leaveParty(player);
                 break;
             case "chat":
                 player.sendMessage("Unknown subcommand.1");
@@ -50,6 +57,7 @@ public class PartyCommands implements CommandExecutor {
                 player.sendMessage("Unknown subcommand.");
                 break;
         }
+
 
         return true;
     }

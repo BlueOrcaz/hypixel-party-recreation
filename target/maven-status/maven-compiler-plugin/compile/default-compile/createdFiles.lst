@@ -1,1 +1,5 @@
+dev\blueorcaz\partySystem\Model\Party.class
 dev\blueorcaz\partySystem\PartySystem.class
+dev\blueorcaz\partySystem\Listeners\ChatListener.class
+dev\blueorcaz\partySystem\Managers\PartyManager.class
+dev\blueorcaz\partySystem\Commands\PartyCommands.class

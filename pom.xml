@@ -38,6 +38,9 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>C:\Users\Bond\Documents\Projects\PartySystemServer\plugins</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
