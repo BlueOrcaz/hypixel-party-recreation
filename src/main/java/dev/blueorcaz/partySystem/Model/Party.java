@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.UUID;
 
 public class Party {
-    // party should have members and leaders
 
     private Player leader;
     private HashSet<UUID> members;
@@ -27,6 +26,10 @@ public class Party {
 
     public HashSet<UUID> getMembers() {
         return members;
+    }
+
+    public int getPartySize() {
+        return members.size();
     }
 
     public void addMember(Player player) {

@@ -30,7 +30,7 @@ public class PartyCommands implements CommandExecutor {
 
         switch (args[0].toLowerCase()) {
             case "create":
-                partyManager.createParty(player);
+                partyManager.createParty(player); // temporary create thing
                 break;
             case "invite":
                 if (args.length < 2) {
@@ -41,17 +41,24 @@ public class PartyCommands implements CommandExecutor {
                 Player target = Bukkit.getPlayerExact(args[1]);
                 partyManager.inviteParty(player, target);
                 break;
+            case "promote":
+                if (args.length < 2) {
+                    player.sendMessage("Usage: /party promote <player>");
+                    break;
+                }
+                Player newLeader = Bukkit.getPlayerExact(args[1]);
+                partyManager.promotePlayer(player, newLeader);
             case "list":
                 partyManager.listParty(player);
-                break;
-            case "join":
-                player.sendMessage("Unknown s1ubcommand.");
                 break;
             case "leave":
                 partyManager.leaveParty(player);
                 break;
             case "chat":
                 player.sendMessage("Unknown subcommand.1");
+                break;
+            case "warp":
+                partyManager.warpParty(player);
                 break;
             default:
                 player.sendMessage("Unknown subcommand.");
