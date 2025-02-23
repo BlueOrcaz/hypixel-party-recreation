@@ -29,9 +29,6 @@ public class PartyCommands implements CommandExecutor {
         }
 
         switch (args[0].toLowerCase()) {
-            case "create":
-                partyManager.createParty(player); // temporary create thing
-                break;
             case "invite":
                 if (args.length < 2) {
                     player.sendMessage("Usage: /party invite <player>");
@@ -55,11 +52,17 @@ public class PartyCommands implements CommandExecutor {
                 partyManager.leaveParty(player);
                 break;
             case "chat":
-                player.sendMessage("Unknown subcommand.1");
+                player.sendMessage("Work in progress!");
                 break;
             case "warp":
                 partyManager.warpParty(player);
                 break;
+            case "join":
+                if (args.length < 2) {
+                    player.sendMessage("Usage: /party join <username>");
+                    break;
+                }
+                partyManager.joinParty(player, args[1]);
             default:
                 player.sendMessage("Unknown subcommand.");
                 break;
