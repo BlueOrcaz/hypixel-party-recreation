@@ -1,16 +1,11 @@
 package dev.blueorcaz.partySystem.Commands;
 
 import dev.blueorcaz.partySystem.Managers.PartyManager;
-import dev.blueorcaz.partySystem.Model.Party;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.UUID;
 
 public class PartyCommands implements CommandExecutor {
     @Override
@@ -34,7 +29,6 @@ public class PartyCommands implements CommandExecutor {
                     player.sendMessage("Usage: /party invite <player>");
                     break;
                 }
-                // invite logic
                 Player target = Bukkit.getPlayerExact(args[1]);
                 partyManager.inviteParty(player, target);
                 break;
@@ -52,7 +46,14 @@ public class PartyCommands implements CommandExecutor {
                 partyManager.leaveParty(player);
                 break;
             case "chat":
-                player.sendMessage("Work in progress!");
+                boolean currentlyToggled = partyManager.isPartyChatEnabled(player); // check if its currently toggled
+                if (currentlyToggled) {
+                    player.sendMessage("Party Chat is now disabled!");
+                    partyManager.togglePartyChat(player);
+                } else {
+                    player.sendMessage("Party Chat is now enabled!");
+                    partyManager.togglePartyChat(player);
+                }
                 break;
             case "warp":
                 partyManager.warpParty(player);
@@ -67,7 +68,6 @@ public class PartyCommands implements CommandExecutor {
                 player.sendMessage("Unknown subcommand.");
                 break;
         }
-
 
         return true;
     }

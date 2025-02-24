@@ -1,19 +1,18 @@
 package dev.blueorcaz.partySystem.Managers;
 
 import dev.blueorcaz.partySystem.Model.Party;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-
 import java.util.HashMap;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
 public class PartyManager {
+    private HashSet<Player> partyChatEnabled = new HashSet<>();
+
     private HashMap<String, Party> parties = new HashMap<>();
     private static PartyManager manager;
     public static PartyManager getManager() { // shoutout to rexe0
@@ -21,6 +20,20 @@ public class PartyManager {
             manager = new PartyManager();
         }
         return manager;
+    }
+
+    public boolean togglePartyChat(Player player) {
+        if (partyChatEnabled.contains(player)) {
+            partyChatEnabled.remove(player);
+            return false;
+        } else {
+            partyChatEnabled.add(player);
+            return true;
+        }
+    }
+
+    public boolean isPartyChatEnabled(Player player) {
+        return partyChatEnabled.contains(player);
     }
 
     public void joinParty(Player player, String key) { // used for json messages
